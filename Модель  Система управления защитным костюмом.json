@@ -1,0 +1,757 @@
+{
+  "version": 1,
+  "origin": "sandbox.rightech.io",
+  "time": "2021-04-20T17:40:56.258Z",
+  "user": "60490e8353072efc4bfd216c",
+  "group": "60490e8353072efc4bfd216b",
+  "store": "models",
+  "data": {
+    "_id": "6078485b402c060010391751",
+    "name": "Система управления защитным костюмом",
+    "base": "mqtt",
+    "data": {
+      "id": "root",
+      "name": "Система управления защитным костюмом",
+      "active": true,
+      "type": "subsystem",
+      "children": [
+        {
+          "id": "external-software-modules",
+          "active": true,
+          "copy": true,
+          "type": "subsystem",
+          "children": [],
+          "name": "Внешние программные модули",
+          "disabled": true
+        },
+        {
+          "id": "params",
+          "name": "Params",
+          "active": true,
+          "type": "subsystem",
+          "children": [
+            {
+              "id": "Serv_info",
+              "name": "Серверная информация",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "online",
+                  "name": "Онлайн",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "boolean",
+                  "linear": true,
+                  "factor": 1,
+                  "description": "Статус подключения устройства",
+                  "unit": null,
+                  "reference": "online"
+                },
+                {
+                  "id": "_ts",
+                  "name": "Время",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "number",
+                  "linear": true,
+                  "factor": 1,
+                  "description": "Время получения пакета от устройства",
+                  "reference": "_ts"
+                }
+              ]
+            },
+            {
+              "id": "suit_param",
+              "name": "Параметры костюма",
+              "active": true,
+              "type": "subsystem",
+              "dataType": "number",
+              "description": "Состояние работы костюма (активирован или деактивирован)",
+              "factor": 1,
+              "linear": true,
+              "source": "state",
+              "children": [
+                {
+                  "id": "active_state",
+                  "name": "Костюм активирован",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "boolean",
+                  "description": "Состояние работы костюма (активирован или деактивирован)",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": null,
+                  "reference": "param/act"
+                },
+                {
+                  "id": "charge",
+                  "name": "Уровень заряда",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Уровень заряда аккумулятора костюма",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": "percent",
+                  "reference": "param/charge"
+                },
+                {
+                  "id": "charge_reserve",
+                  "name": "Осталось мин",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "param/charge_reserve",
+                  "unit": "duration-minute"
+                }
+              ]
+            },
+            {
+              "id": "cord",
+              "name": "Кординаты",
+              "_localId": "usa7v",
+              "active": true,
+              "type": "subsystem",
+              "expanded": false,
+              "children": [
+                {
+                  "id": "coords",
+                  "name": "Координаты JSON",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "object",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": null,
+                  "children": [
+                    {
+                      "id": "x",
+                      "name": "X",
+                      "active": true,
+                      "type": "argument",
+                      "dataType": "number",
+                      "description": "Координата X",
+                      "factor": 1,
+                      "linear": true,
+                      "source": "state",
+                      "unit": "length-meter",
+                      "reference": "coords.x",
+                      "_parentId": "coords",
+                      "expanded": false,
+                      "_localId": "swk9og4t2epb"
+                    },
+                    {
+                      "id": "y",
+                      "name": "Y",
+                      "active": true,
+                      "type": "argument",
+                      "dataType": "number",
+                      "description": "Координата Y",
+                      "factor": 1,
+                      "linear": true,
+                      "source": "state",
+                      "unit": "length-meter",
+                      "reference": "coords.y",
+                      "_parentId": "coords",
+                      "expanded": false,
+                      "_localId": "o6em9wj3pbdm"
+                    },
+                    {
+                      "id": "z",
+                      "name": "Z",
+                      "active": true,
+                      "type": "argument",
+                      "dataType": "number",
+                      "description": "Координата Z",
+                      "factor": 1,
+                      "linear": true,
+                      "source": "state",
+                      "unit": "length-meter",
+                      "reference": "coords.z",
+                      "_parentId": "coords",
+                      "expanded": false,
+                      "_localId": "4ioz6w16z5o8"
+                    }
+                  ],
+                  "description": "Объект, в который приходят все три координаты положения человека в формате JSON",
+                  "reference": "cord/full",
+                  "_parentId": "params",
+                  "expanded": true,
+                  "_localId": "234mbrdkjwik"
+                }
+              ]
+            },
+            {
+              "id": "env",
+              "name": "Окружающая среда",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "humidity",
+                  "name": "Влажность",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/humidity",
+                  "unit": "percent"
+                },
+                {
+                  "id": "oxygen",
+                  "name": "Кислород",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/oxygen",
+                  "unit": "percent"
+                },
+                {
+                  "id": "carbon",
+                  "name": "Углекислый газ",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/carbon",
+                  "unit": "percent"
+                },
+                {
+                  "id": "nitric",
+                  "name": "Оксид азота",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/nitric",
+                  "unit": "percent"
+                },
+                {
+                  "id": "sulfurous",
+                  "name": "Сернистый ангидрид",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/sulfurous",
+                  "unit": "percent"
+                },
+                {
+                  "id": "hydrogen_sulfide",
+                  "name": "Сероводород",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/hydrogen_sulfide",
+                  "unit": "percent"
+                },
+                {
+                  "id": "methane",
+                  "name": "Метан",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/methane",
+                  "unit": "percent"
+                },
+                {
+                  "id": "dust",
+                  "name": "Угольная пыль",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "env/dust",
+                  "unit": "percent"
+                }
+              ]
+            },
+            {
+              "id": "Beacon",
+              "name": "Beacon",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "beacons",
+                  "name": "Данные от Beacon",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "string",
+                  "description": "Пакет данных в формате Base64, который впоследствии нужно разобрать с помощью обработчика на отдельные параметры",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": null,
+                  "reference": "beacons/string"
+                },
+                {
+                  "id": "lat",
+                  "name": "Широта",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Широта по данным GPS",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": "angle-degree",
+                  "reference": "beacons/lat"
+                },
+                {
+                  "id": "lon",
+                  "name": "Долгота",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Долгота по данным GPS",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": "angle-degree",
+                  "reference": "beacons/lon"
+                },
+                {
+                  "id": "alt",
+                  "name": "Высота",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": "length-meter",
+                  "description": "Высота по данным GPS",
+                  "reference": "beacons/alt"
+                },
+                {
+                  "id": "ev_time",
+                  "name": "Время события",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Время, в которое были зафиксированы значения",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "unit": "duration-second",
+                  "reference": "beacons/ev_time"
+                },
+                {
+                  "id": "visible_count",
+                  "name": "Количество видимых устройств",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Количество видимых Beacon маяков",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "beacons/visible_count"
+                },
+                {
+                  "id": "mac_98_12",
+                  "name": "RSSI 98:12",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка 98:12",
+                  "reference": "beacons/mac_98_12"
+                },
+                {
+                  "id": "mac_0a_35",
+                  "name": "RSSI 0a:35",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка 0a:35",
+                  "reference": "beacons/mac_0a_35"
+                },
+                {
+                  "id": "mac_29_39",
+                  "name": "RSSI 29:39",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка 29:39",
+                  "reference": "beacons/mac_29_39"
+                },
+                {
+                  "id": "mac_d3_96",
+                  "name": "RSSI d3:96",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "beacons/mac_d3_96"
+                },
+                {
+                  "id": "mac_f7_41",
+                  "name": "RSSI f7:41",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка f7:41",
+                  "reference": "beacons/mac_f7_41"
+                },
+                {
+                  "id": "mac_01_dd",
+                  "name": "RSSI 01:dd",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка 01:dd",
+                  "reference": "beacons/mac_01_dd"
+                },
+                {
+                  "id": "mac_08_cd",
+                  "name": "RSSI 08:cd",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка 08:cd",
+                  "reference": "beacons/mac_08_cd"
+                },
+                {
+                  "id": "mac_0e_60",
+                  "name": "RSSI 0e:60",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "description": "Сигнал RSSI от маяка 0e:60",
+                  "reference": "beacons/mac_0e_60"
+                }
+              ]
+            },
+            {
+              "id": "Beacon_dist",
+              "name": "Расстояния до маяков",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "dist_98_12",
+                  "name": "98:12",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка 98:12",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_98_12",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_0a_35",
+                  "name": "0a:35",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка 0a:35",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_0a_35",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_29_39",
+                  "name": "29:39",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка 29:39",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_29_39",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_d3_96",
+                  "name": "d3:96",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка d3:96",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_d3_96",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_f7_41",
+                  "name": "f7:41",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка f7:41",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_f7_41",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_01_dd",
+                  "name": "01:dd",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка 01:dd",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_01_dd",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_08_cd",
+                  "name": "08:cd",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка 08:cd",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_08_cd",
+                  "unit": "length-meter"
+                },
+                {
+                  "id": "dist_0e_60",
+                  "name": "0e:60",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": "Рассчитанное расстояние до маяка 0e:60",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "distance/dist_0e_60",
+                  "unit": "length-meter"
+                }
+              ]
+            },
+            {
+              "id": "mqtt-last",
+              "name": "Last MQTT Publish",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "topic",
+                  "name": "Topic",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "string",
+                  "reference": "topic"
+                },
+                {
+                  "id": "payload",
+                  "name": "Payload",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "string",
+                  "reference": "payload"
+                }
+              ]
+            },
+            {
+              "id": "cmds",
+              "name": "Commands",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "on",
+                  "name": "Активировать костюм",
+                  "active": true,
+                  "type": "action",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "service": "ric-gate",
+                  "command": "publish",
+                  "params": {
+                    "payload": "true",
+                    "topic": "param/act"
+                  },
+                  "expanded": false,
+                  "_localId": "lhkbndgjpxf0"
+                },
+                {
+                  "id": "off",
+                  "name": "Деактивировать костюм",
+                  "active": true,
+                  "type": "action",
+                  "service": "ric-gate",
+                  "command": "publish",
+                  "params": {
+                    "payload": "false",
+                    "topic": "param/act",
+                    "wait": null
+                  },
+                  "expanded": false,
+                  "_localId": "wa4fgrife1x7"
+                }
+              ],
+              "expanded": true,
+              "_localId": "liddlujzsht8"
+            }
+          ]
+        },
+        {
+          "id": "accum",
+          "name": "Емкость аккумулятора костюма",
+          "active": true,
+          "type": "argument",
+          "dataType": "number",
+          "factor": 1,
+          "linear": true,
+          "source": "config"
+        },
+        {
+          "id": "power",
+          "name": "Мощность в течение часа",
+          "active": true,
+          "type": "argument",
+          "dataType": "number",
+          "factor": 1,
+          "linear": true,
+          "source": "config"
+        }
+      ],
+      "_isRoot": true,
+      "base": "mqtt",
+      "disabled": [],
+      "removed": []
+    },
+    "props": {
+      "bots": true,
+      "hardwareEvents": false,
+      "helper": {
+        "nostate": "@ric-docs/docs/helpers/mqtt.md"
+      },
+      "prefix": "",
+      "order": 1,
+      "typeInput": {
+        "hidden": false
+      },
+      "statusInput": {
+        "hidden": false
+      },
+      "descriptionInput": {
+        "hidden": false
+      },
+      "defaultNode": "temperature",
+      "protocol": "mqtt",
+      "idPattern": "mqtt-$tagname-$nanoid",
+      "namePattern": "mqtt-$tagname-$nanoid",
+      "idInput": {
+        "label": "ClientId"
+      },
+      "auth": {
+        "title": "mqtt_auth",
+        "fields": {
+          "username": {
+            "title": "mqtt_username"
+          },
+          "password": {
+            "secret": true,
+            "title": "mqtt_password"
+          }
+        }
+      },
+      "x509": {
+        "enabled": true
+      },
+      "parserParams": {
+        "saveBinaryAs": {
+          "ctrl": "Select",
+          "opts": {
+            "options": [
+              {
+                "value": "",
+                "label": "Text"
+              },
+              {
+                "value": "base64",
+                "label": "Base64"
+              },
+              {
+                "value": "hex",
+                "label": "HEX"
+              }
+            ]
+          },
+          "defaultValue": "",
+          "when": {
+            "==": [
+              {
+                "var": "node.dataType"
+              },
+              "string"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

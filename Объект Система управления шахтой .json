@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "origin": "sandbox.rightech.io",
+  "time": "2021-04-20T17:41:08.112Z",
+  "user": "60490e8353072efc4bfd216c",
+  "group": "60490e8353072efc4bfd216b",
+  "store": "objects",
+  "data": {
+    "config": {},
+    "_id": "607ab328e3ae1d0010cdd0fa",
+    "id": "mqtt-iprofi_330411247-5o602v",
+    "name": "Система управления шахтой",
+    "botEnabled": true,
+    "status": "ok",
+    "owner": "60490e8353072efc4bfd216c",
+    "group": "60490e8353072efc4bfd216b",
+    "time": 1618653992404,
+    "_storageSize": 100,
+    "bot": {
+      "state": "running",
+      "instance": "0",
+      "config": {
+        "gen": [
+          {
+            "name": "noise",
+            "type": {
+              "random": {
+                "min": 20,
+                "max": 300
+              }
+            }
+          }
+        ]
+      },
+      "self": {
+        "sendinterval": 60000
+      }
+    },
+    "_at": 1618928168995,
+    "access": [
+      "5b3c895ad4100417007d22b7"
+    ]
+  }
+}
