@@ -1,0 +1,401 @@
+{
+  "version": 1,
+  "origin": "sandbox.rightech.io",
+  "time": "2021-04-20T17:40:58.096Z",
+  "user": "60490e8353072efc4bfd216c",
+  "group": "60490e8353072efc4bfd216b",
+  "store": "models",
+  "data": {
+    "_id": "607930a5402c060010391d6f",
+    "name": "Система управления шахтой",
+    "base": "mqtt",
+    "data": {
+      "id": "root",
+      "name": "Система управления шахтой",
+      "active": true,
+      "type": "subsystem",
+      "children": [
+        {
+          "id": "external-software-modules",
+          "active": true,
+          "copy": true,
+          "type": "subsystem",
+          "children": [],
+          "name": "External software modules"
+        },
+        {
+          "id": "params",
+          "name": "Params",
+          "active": true,
+          "type": "subsystem",
+          "children": [
+            {
+              "id": "server-info",
+              "name": "Серверная информация",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "online",
+                  "name": "Онлайн",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "boolean",
+                  "reference": "online",
+                  "_parentId": "server-info",
+                  "expanded": false,
+                  "_localId": "s9y3iqi9f3il"
+                },
+                {
+                  "id": "_ts",
+                  "name": "Время",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "number",
+                  "unit": "duration-microsecond",
+                  "reference": "_ts",
+                  "_parentId": "server-info",
+                  "factor": 1,
+                  "linear": true,
+                  "expanded": false,
+                  "_localId": "00qu8cfeawa5"
+                }
+              ],
+              "expanded": true,
+              "_localId": "3dt6xzitx2t5"
+            },
+            {
+              "id": "param",
+              "name": "Параметры",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "electro",
+                  "name": "Электропитание подано",
+                  "_localId": "367gy",
+                  "active": true,
+                  "type": "argument",
+                  "expanded": false,
+                  "source": "state",
+                  "dataType": "boolean",
+                  "linear": true,
+                  "factor": 1,
+                  "_parentId": "params",
+                  "reference": "param/electro",
+                  "unit": null
+                },
+                {
+                  "id": "ventilation",
+                  "name": "Вентиляция включена",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "boolean",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "children": [],
+                  "reference": "param/ventilation",
+                  "unit": null
+                },
+                {
+                  "id": "buzzer",
+                  "name": "Сирена включена",
+                  "_localId": "j82z0",
+                  "active": true,
+                  "type": "argument",
+                  "expanded": false,
+                  "source": "state",
+                  "dataType": "boolean",
+                  "linear": true,
+                  "factor": 1,
+                  "_parentId": "param",
+                  "reference": "param/buzzer",
+                  "unit": null
+                },
+                {
+                  "id": "noise",
+                  "name": "Датчик шума",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "param/noise",
+                  "unit": "decibel"
+                },
+                {
+                  "id": "temp1",
+                  "name": "Температура породы 1",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "number",
+                  "description": null,
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "param/temp1",
+                  "unit": "temperature-celsius"
+                },
+                {
+                  "id": "temp2",
+                  "name": "Температура породы 2",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "number",
+                  "linear": true,
+                  "factor": 1,
+                  "_parentId": "param",
+                  "children": [],
+                  "reference": "param/temp2",
+                  "unit": "temperature-celsius"
+                },
+                {
+                  "id": "move1",
+                  "name": "Движение породы 1",
+                  "active": true,
+                  "type": "argument",
+                  "dataType": "boolean",
+                  "factor": 1,
+                  "linear": true,
+                  "source": "state",
+                  "reference": "param/move1",
+                  "unit": null
+                },
+                {
+                  "id": "move2",
+                  "name": "Движение породы 2",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "boolean",
+                  "linear": true,
+                  "factor": 1,
+                  "_parentId": "param",
+                  "children": [],
+                  "reference": "param/move2",
+                  "unit": null
+                },
+                {
+                  "id": "move3",
+                  "name": "Движение породы 3",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "boolean",
+                  "linear": true,
+                  "factor": 1,
+                  "_parentId": "param",
+                  "children": [],
+                  "reference": "param/move3",
+                  "unit": null
+                },
+                {
+                  "id": "move4",
+                  "name": "Движение породы 4",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "boolean",
+                  "linear": true,
+                  "factor": 1,
+                  "_parentId": "param",
+                  "children": [],
+                  "reference": "param/move4",
+                  "unit": null
+                }
+              ]
+            },
+            {
+              "id": "mqtt-last",
+              "name": "Last MQTT Publish",
+              "active": true,
+              "type": "subsystem",
+              "children": [
+                {
+                  "id": "topic",
+                  "name": "Topic",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "string",
+                  "reference": "topic",
+                  "_parentId": "mqtt-last",
+                  "expanded": false,
+                  "_localId": "afxj0xv6vhxy"
+                },
+                {
+                  "id": "payload",
+                  "name": "Payload",
+                  "active": true,
+                  "type": "argument",
+                  "source": "state",
+                  "dataType": "string",
+                  "reference": "payload",
+                  "_parentId": "mqtt-last",
+                  "expanded": false,
+                  "_localId": "w0efs58bf8j3"
+                }
+              ],
+              "expanded": false,
+              "_localId": "z1y0r4tq7y7n"
+            }
+          ]
+        },
+        {
+          "id": "cmds",
+          "name": "Commands",
+          "active": true,
+          "type": "subsystem",
+          "children": [
+            {
+              "id": "siren_on",
+              "name": "Включить сирену",
+              "active": true,
+              "type": "action",
+              "dataType": "number",
+              "factor": 1,
+              "linear": true,
+              "source": "state",
+              "command": "publish",
+              "service": "ric-gate",
+              "params": {
+                "payload": "true",
+                "topic": "param/buzzer"
+              }
+            },
+            {
+              "id": "siren_off",
+              "name": "Выключить сирену",
+              "active": true,
+              "type": "action",
+              "source": "state",
+              "dataType": "number",
+              "linear": true,
+              "factor": 1,
+              "_parentId": "cmds",
+              "service": "ric-gate",
+              "command": "publish",
+              "params": {
+                "topic": "param/buzzer",
+                "payload": "false"
+              },
+              "children": []
+            },
+            {
+              "id": "vent_on",
+              "name": "Включить вентиляцию",
+              "active": true,
+              "type": "action",
+              "source": "state",
+              "dataType": "number",
+              "linear": true,
+              "factor": 1,
+              "_parentId": "cmds",
+              "service": "ric-gate",
+              "command": "publish",
+              "params": {
+                "topic": "param/ventilation",
+                "payload": "true"
+              },
+              "children": []
+            },
+            {
+              "id": "vent_off",
+              "name": "Выключить вентиляцию",
+              "active": true,
+              "type": "action",
+              "source": "state",
+              "dataType": "number",
+              "linear": true,
+              "factor": 1,
+              "_parentId": "cmds",
+              "service": "ric-gate",
+              "command": "publish",
+              "params": {
+                "topic": "param/ventilation",
+                "payload": "false"
+              },
+              "children": []
+            }
+          ]
+        }
+      ],
+      "_isRoot": true
+    },
+    "props": {
+      "bots": true,
+      "hardwareEvents": false,
+      "helper": {
+        "nostate": "@ric-docs/docs/helpers/mqtt.md"
+      },
+      "prefix": "",
+      "order": 1,
+      "typeInput": {
+        "hidden": false
+      },
+      "statusInput": {
+        "hidden": false
+      },
+      "descriptionInput": {
+        "hidden": false
+      },
+      "defaultNode": "temperature",
+      "protocol": "mqtt",
+      "idPattern": "mqtt-$tagname-$nanoid",
+      "namePattern": "mqtt-$tagname-$nanoid",
+      "idInput": {
+        "label": "ClientId"
+      },
+      "auth": {
+        "title": "mqtt_auth",
+        "fields": {
+          "username": {
+            "title": "mqtt_username"
+          },
+          "password": {
+            "secret": true,
+            "title": "mqtt_password"
+          }
+        }
+      },
+      "x509": {
+        "enabled": true
+      },
+      "parserParams": {
+        "saveBinaryAs": {
+          "ctrl": "Select",
+          "opts": {
+            "options": [
+              {
+                "value": "",
+                "label": "Text"
+              },
+              {
+                "value": "base64",
+                "label": "Base64"
+              },
+              {
+                "value": "hex",
+                "label": "HEX"
+              }
+            ]
+          },
+          "defaultValue": "",
+          "when": {
+            "==": [
+              {
+                "var": "node.dataType"
+              },
+              "string"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
